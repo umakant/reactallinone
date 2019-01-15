@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Validation from './Validation';
 
 class Input extends Component {
     constructor(props){
@@ -43,7 +44,7 @@ class Input extends Component {
             <div className="test">
                 <label>
                     Value 1:
-                    <input type="text" value={this.state.value1} onChange={this.handleChange1} />
+                    <input type="text" ref="inputColor" value={this.state.value1} onChange={this.handleChange1} />
                 </label>
                 <label>
                     Value 2:
