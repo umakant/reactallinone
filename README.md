@@ -1,1 +1,1 @@
-We use ref example in this project.
+React Refs in this project.
