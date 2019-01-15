@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
 import Validation from './Validation';
+import Select from './Select';
 
 class Input extends Component {
     constructor(props){
         super(props);
-
 
         this.state = { 
             value1: '',
             value2: '',
             result: '' 
         };
-
-        const valuesall = {
-            dates: 'vca',
-            name: 'Umakant',
-            email: 'umakantsonwani@gmail.com'
-        }
-
-        //this.state = { value2: '' };
+        
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
     }
-
-
 
     handleChange1=(e)=>{
         this.setState({ value1 : e.target.value });
@@ -35,13 +26,18 @@ class Input extends Component {
 
     addvalues=(e)=> {
         let res = parseInt(this.state.value1)+parseInt(this.state.value2);
-        //let res = this.state.value1+this.state.value2;
         this.setState({ result: res });
     }
 
     render() {
         return (
             <div className="test">
+                <Select />
+                <div>
+                    <label>
+                        My Name: {this.props.value} <br></br>
+                    </label>
+                </div>
                 <label>
                     Value 1:
                     <input type="text" ref="inputColor" value={this.state.value1} onChange={this.handleChange1} />

@@ -3,11 +3,15 @@ import Validation from './Validation';
 import Input from './input';
 
 class Testpage extends Component {
-    render() {
+    constructor(props){
+        super(props);
+    }
+
+    render(props) {
         return (
             <div>
                 <Validation />
-                <Input />
+                <Input name="Umakant" value="Umakant"/>
             </div>
         );
     }
