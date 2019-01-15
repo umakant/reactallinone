@@ -4,19 +4,11 @@ class Input extends Component {
     constructor(props){
         super(props);
         
-
-
         this.state = { 
             value1: '',
             value2: '',
             result: '' 
         };
-
-        const valuesall = {
-            dates: 'vca',
-            name: 'Umakant',
-            email: 'umakantsonwani@gmail.com'
-        }
 
         //this.state = { value2: '' };
         this.handleChange1 = this.handleChange1.bind(this);
