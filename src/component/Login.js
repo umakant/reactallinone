@@ -16,11 +16,19 @@ class Login extends React.Component {
       const username = this.username.current.value;
       const password = this.password.current.value;
       const errors = this.handleValidation(username, password);
-  
+      
+      var username = localStorage.getItem('username');
+      var password = localStorage.getItem('password');
+
+      
+
       if (errors.length > 0) {
         this.setState({ errors });
         return;
       }
+
+
+
     };
   
     handleValidation = (username, password) => {
@@ -28,14 +36,12 @@ class Login extends React.Component {
       if (username.length === 0) {
         errors.push("Username cannot be empty");
       } else {
-        console.log(username);
         localStorage.setItem('username', username);
       }
       
       if (password.length < 6) {
         errors.push("Password should be at least 6 characters long");
       } else {
-        console.log(password);
         localStorage.setItem('password', password);
       }
       
@@ -47,7 +53,7 @@ class Login extends React.Component {
       const { errors } = this.state;
       return (
         <div>
-          {localStorage.getItem('password')}
+          Please Login into the website.
           <form onSubmit={this.handleSubmit}>
             {errors.map(error => <p key={error}>{error}</p>)}
             <div>

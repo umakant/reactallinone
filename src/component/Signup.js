@@ -24,6 +24,8 @@ class Signup extends React.Component {
       if (errors.length > 0) {
         this.setState({ errors });
         return;
+      } else {
+        this.props.history.push("/login");
       }
     };
   
@@ -32,35 +34,33 @@ class Signup extends React.Component {
       if (username.length === 0) {
         errors.push("Username cannot be empty");
       } else {
-        localStorage.setItem('username', username);
+        localStorage.setItem('newusername', username);
       }
       if (email.length === 0) {
         errors.push("Email cannot be empty");
       } else {
-        localStorage.setItem('email', email);
+        localStorage.setItem('newemail', email);
       }
       
       if (password.length < 6) {
         errors.push("Password should be at least 6 characters long");
       } else {
-        localStorage.setItem('password', password);
+        console.log('Password Okay');
+        localStorage.setItem('newpassword', password);
       }
       
-    if(cpassword.length === 0) {
-        //console.log('Confirm Password can not be blank.');
+      if(cpassword.length === 0) {
         errors.push("Confirm Password can not be blank.");
       } else if (cpassword !== password) {
-        // console.log(password);
-        // console.log(cpassword);
-        // console.log('Confirm Password not matched with Password');
         errors.push("Confirm Password not matched with Password");
       } else {
-        // console.log(cpassword);
-        // console.log("Matched");
-        localStorage.setItem('cpassword', cpassword);
+        localStorage.setItem('newcpassword', cpassword);
       }
       
-      
+      if(errors.length === 0){
+        errors.pop();
+      }
+
       return errors;
     };
   
@@ -70,7 +70,10 @@ class Signup extends React.Component {
           <div>
               <h3>Signup</h3>
               <form onSubmit={this.handleSubmit}>
-                  {errors.map(error => <p key={error}>{error}</p>)}
+              
+                  {
+                    errors.map(error => <p key={error}>{error}</p>)
+                  }
                   <div>
                       <label>Username:</label>
                       <input type="text" ref={this.username} />
