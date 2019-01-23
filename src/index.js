@@ -5,6 +5,7 @@ import App from './App';
 import Home from './Home';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import Basicexample from './pages/Basicexample';
 
 ReactDOM.render(<Home />, document.getElementById('root'));
 

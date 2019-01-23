@@ -23,27 +23,20 @@ class Select extends Component {
             },
         ];
         this.handleSelect = this.handleSelect.bind(this);
-        this.handleOption = this.handleOption.bind(this);
     }
 
     handleSelect= (e) => {
         // this.setState({value : this.refs.name});
         // console.log(this.state.value);
-        console.log('Select');
-    }
-
-    handleOption= (e) => {
-        // this.setState({value : this.refs.name});
-        // console.log(this.state.value);
-        console.log('Option');
+        console.log(this.refs.selectoption.value);
     }
 
     render() {
         return (
             <div>
-                <select name="names" onChange={this.handleSelect}>
+                <select name="names" ref="selectoption" onChange={this.handleSelect}>
                     {this.names.map((e, key) => 
-                    <option key={e.id} ref="name" value={e.id} onSelect={this.handleOption}>{e.client}</option>)}
+                    <option key={e.id} value={e.id}>{e.client}</option>)}
                 </select>
             </div>
         );

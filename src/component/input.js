@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Validation from './Validation';
 import Select from './Select';
+import Lifecycle from './lifecycle';
 
 class Input extends Component {
     constructor(props){
@@ -32,6 +33,7 @@ class Input extends Component {
     render() {
         return (
             <div className="test">
+                <Lifecycle />
                 <Select />
                 <div>
                     <label>
