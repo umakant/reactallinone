@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 class Login extends React.Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class Login extends React.Component {
         errors.push("Username cannot be empty");
       } else {
         console.log(username);
-        localStorage.setItem('Username', username);
+        localStorage.setItem('username', username);
       }
       
       if (password.length < 6) {

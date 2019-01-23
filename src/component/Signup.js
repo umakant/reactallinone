@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 class Signup extends React.Component {
     constructor(props) {
@@ -49,7 +49,7 @@ class Signup extends React.Component {
     if(cpassword.length === 0) {
         //console.log('Confirm Password can not be blank.');
         errors.push("Confirm Password can not be blank.");
-      } else if (cpassword != password) {
+      } else if (cpassword !== password) {
         // console.log(password);
         // console.log(cpassword);
         // console.log('Confirm Password not matched with Password');
