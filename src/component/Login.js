@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Validation extends React.Component {
+class Login extends React.Component {
     constructor(props) {
       super(props);
   
@@ -27,11 +27,18 @@ class Validation extends React.Component {
       const errors = [];
       if (username.length === 0) {
         errors.push("Username cannot be empty");
+      } else {
+        console.log(username);
+        localStorage.setItem('Username', username);
       }
       
       if (password.length < 6) {
         errors.push("Password should be at least 6 characters long");
+      } else {
+        console.log(password);
+        localStorage.setItem('password', password);
       }
+      
       
       return errors;
     };
@@ -40,6 +47,7 @@ class Validation extends React.Component {
       const { errors } = this.state;
       return (
         <div>
+          {localStorage.getItem('password')}
           <form onSubmit={this.handleSubmit}>
             {errors.map(error => <p key={error}>{error}</p>)}
             <div>
@@ -59,4 +67,4 @@ class Validation extends React.Component {
     }
   }
 
-  export default Validation;
+  export default Login;
