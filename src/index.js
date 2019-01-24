@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import Home from './Home';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -10,6 +9,7 @@ import Login from './component/Login';
 import Signup from './component/Signup';
 import Navbar from './component/Navbar';
 import Profile from './component/Profile';
+import Logout from './component/Logout';
 
 ReactDOM.render(
     <Router>
@@ -19,6 +19,7 @@ ReactDOM.render(
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/profile" component={Profile} />
+        <Route path="/logout" component={Logout} />
       </div>
   </Router>
 , document.getElementById('root'));

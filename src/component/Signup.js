@@ -84,11 +84,11 @@ class Signup extends React.Component {
                   </div>
                   <div>
                       <label>Password:</label>
-                      <input type="text" ref={this.password} />
+                      <input type="password" ref={this.password} />
                   </div>
                   <div>
                       <label>Confirm Password:</label>
-                      <input type="text" ref={this.cpassword} />
+                      <input type="password" ref={this.cpassword} />
                   </div>
                   <div>
                       <button>Submit</button>

@@ -17,18 +17,15 @@ class Login extends React.Component {
       const password = this.password.current.value;
       const errors = this.handleValidation(username, password);
       
-      var username = localStorage.getItem('username');
-      var password = localStorage.getItem('password');
+      // var username = localStorage.getItem('username');
+      // var password = localStorage.getItem('password');
 
-      
+
 
       if (errors.length > 0) {
         this.setState({ errors });
         return;
       }
-
-
-
     };
   
     handleValidation = (username, password) => {
@@ -44,7 +41,18 @@ class Login extends React.Component {
       } else {
         localStorage.setItem('password', password);
       }
+
+      const newusername = localStorage.getItem('newusername');
+      const newpassword = localStorage.getItem('newpassword');
       
+      if(username === newusername && password === newpassword){
+        //console.log('Success');
+        sessionStorage.setItem('userAuth', 'Success');
+        this.props.history.push("/profile");
+      } else {
+        errors.push("Username and Password are incorrect");
+        //console.log("Username and Password are incorrect");
+      }
       
       return errors;
     };
@@ -58,11 +66,11 @@ class Login extends React.Component {
             {errors.map(error => <p key={error}>{error}</p>)}
             <div>
               <label>Username:</label>
-              <input type="text" ref={this.username} />
+              <input type="password" ref={this.username} />
             </div>
             <div>
               <label>Password:</label>
-              <input type="text" ref={this.password} />
+              <input type="password" ref={this.password} />
             </div>
             <div>
               <button>Submit</button>
