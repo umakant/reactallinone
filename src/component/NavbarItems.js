@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import { Navbar, Nav, Button, Dropdown, Form, Collapse,  } from 'bootstrap-4-react';
 
 
 
-class Navbar extends Component {
+class NavbarItems extends Component {
     constructor(props){
         super(props);
         const auth = sessionStorage.getItem('userAuth');
@@ -53,11 +54,9 @@ class Navbar extends Component {
         return this.state.navitems.map( nav => {
             return(
                 <div>
-                    <ul>
-                        <li key={nav.id} className="item-card">
-                            <Link to={nav.url}>{nav.name}</Link>
-                        </li>
-                    </ul>
+                    <Nav.Item eventKey={nav.id} className="item-card">
+                        <Nav.ItemLink href={nav.url}>{nav.name}</Nav.ItemLink>
+                    </Nav.Item>
               </div>
               );
           }
@@ -65,4 +64,4 @@ class Navbar extends Component {
     };
 }
 
-export default Navbar;
+export default NavbarItems;

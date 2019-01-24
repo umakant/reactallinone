@@ -7,14 +7,23 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './component/Login';
 import Signup from './component/Signup';
-import Navbar from './component/Navbar';
+import NavbarItems from './component/NavbarItems';
 import Profile from './component/Profile';
 import Logout from './component/Logout';
+import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
 
 ReactDOM.render(
     <Router>
       <div>
-        <Navbar />
+        <Navbar expand="lg" light bg="light">
+            <Collapse navbar id="navbarSupportedContent">
+                <Navbar.Nav mr="auto">
+                  <Nav pullRight>
+                    <NavbarItems />
+                  </Nav>
+                </Navbar.Nav>
+              </Collapse>
+          </Navbar>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
