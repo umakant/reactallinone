@@ -5,7 +5,7 @@ import Header from './Header';
 class Signup extends React.Component {
     constructor(props) {
       super(props);
-  
+
       this.username = React.createRef();
       this.email    = React.createRef();
       this.password = React.createRef();
@@ -16,6 +16,13 @@ class Signup extends React.Component {
       this.state = {
         errors: []
       };
+      
+      const checkAuth = sessionStorage.getItem('userAuth');
+      
+      if(checkAuth === "Success"){
+        this.props.history.push("/profile");
+      }
+
     }
   
     handleSubmit = (e) => {
@@ -61,7 +68,6 @@ class Signup extends React.Component {
       if (password.length < 6) {
         errors.push("Password should be at least 6 characters long");
       } else {
-        console.log('Password Okay');
         localStorage.setItem('newpassword', password);
       }
       

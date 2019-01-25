@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './Home';
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './component/Login';
 import Signup from './component/Signup';
@@ -11,11 +11,12 @@ import NavbarItems from './component/NavbarItems';
 import Profile from './component/Profile';
 import Logout from './component/Logout';
 import { Navbar, Nav, Collapse } from 'bootstrap-4-react';
+import Footer from './component/Footer';
 
 ReactDOM.render(
     <Router>
       <div>
-        <Navbar expand="lg" light bg="light">
+        <Navbar expand="lg" light bg="dark">
             <Collapse navbar>
                 <Navbar.Nav mr="auto">
                   <Nav>
@@ -29,6 +30,7 @@ ReactDOM.render(
         <Route path="/signup" component={Signup} />
         <Route path="/profile" component={Profile} />
         <Route path="/logout" component={Logout} />
+        <Footer />
       </div>
   </Router>
 , document.getElementById('root'));
