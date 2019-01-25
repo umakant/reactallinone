@@ -17,14 +17,8 @@ ReactDOM.render(
     <Router>
       <div>
         <Navbar expand="lg" light bg="dark">
-            <Collapse navbar>
-                <Navbar.Nav mr="auto">
-                  <Nav>
-                    <NavbarItems />
-                  </Nav>
-                </Navbar.Nav>
-              </Collapse>
-          </Navbar>
+          <NavbarItems />
+        </Navbar>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
