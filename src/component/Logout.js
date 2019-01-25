@@ -4,7 +4,6 @@ class Logout extends Component {
     constructor(props){
         super(props);
         sessionStorage.clear();
-        localStorage.clear();
         this.props.history.push("/");
     }
     render() {
