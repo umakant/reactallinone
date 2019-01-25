@@ -11,6 +11,12 @@ class Login extends React.Component {
       this.state = {
         errors: []
       };
+      
+      const checkAuth = sessionStorage.getItem('userAuth');
+      
+      if(checkAuth === "Success"){
+        this.props.history.push("/profile");
+      }
     }
   
     handleSubmit = (e) => {
@@ -19,11 +25,6 @@ class Login extends React.Component {
       const password = this.password.current.value;
       const errors = this.handleValidation(username, password);
       
-      // var username = localStorage.getItem('username');
-      // var password = localStorage.getItem('password');
-
-
-
       if (errors.length > 0) {
         this.setState({ errors });
         return;
@@ -53,7 +54,6 @@ class Login extends React.Component {
         this.props.history.push("/profile");
       } else {
         errors.push("Username and Password are incorrect");
-        //console.log("Username and Password are incorrect");
       }
       
       return errors;
