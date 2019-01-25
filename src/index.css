@@ -26,3 +26,13 @@ color: #999;
 .col-sm-6.col-md-4 img.img-rounded.img-responsive {
   width: 100%;
 } 
+ul.navbar-nav.mr-auto li.nav-item a {
+  color: #fff;
+}
+ul.navbar-nav.mr-auto li.nav-item a:hover {
+  color: #fff;
+}
+.footer-copyright.text-center.py-3 {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+}
