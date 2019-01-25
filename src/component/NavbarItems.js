@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Button, Dropdown, Form, Collapse,  } from 'bootstrap-4-react';
 
 
 
@@ -53,11 +52,9 @@ class NavbarItems extends Component {
     render() {
         return this.state.navitems.map( nav => {
             return(
-                <div>
-                    <Nav.Item eventKey={nav.id} className="item-card">
-                        <Nav.ItemLink href={nav.url}>{nav.name}</Nav.ItemLink>
-                    </Nav.Item>
-              </div>
+                    <li className="nav-item" key={nav.id}>
+                        <Link to={nav.url} className="nav-link">{nav.name}</Link>
+                    </li>
               );
           }
         )

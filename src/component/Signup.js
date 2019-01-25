@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from '../logo.svg';
+import Header from './Header';
 
 class Signup extends React.Component {
     constructor(props) {
@@ -8,6 +10,9 @@ class Signup extends React.Component {
       this.email    = React.createRef();
       this.password = React.createRef();
       this.cpassword = React.createRef();
+      this.location = React.createRef();
+      this.website = React.createRef();
+      this.dateofbirth  = React.createRef();
       this.state = {
         errors: []
       };
@@ -19,8 +24,20 @@ class Signup extends React.Component {
       const email    = this.email.current.value;
       const password = this.password.current.value;
       const cpassword = this.cpassword.current.value;
+      const location = this.location.current.value;
+      const website = this.website.current.value;
+      const dateofbirth = this.dateofbirth.current.value;
       const errors = this.handleValidation(username, email, password, cpassword);
-  
+      
+      if(location){
+        localStorage.setItem('location', location);
+      }
+      if(website){
+        localStorage.setItem('website', website);
+      }
+      if(dateofbirth){
+        localStorage.setItem('dateofbirth', dateofbirth);
+      }
       if (errors.length > 0) {
         this.setState({ errors });
         return;
@@ -41,7 +58,6 @@ class Signup extends React.Component {
       } else {
         localStorage.setItem('newemail', email);
       }
-      
       if (password.length < 6) {
         errors.push("Password should be at least 6 characters long");
       } else {
@@ -61,39 +77,80 @@ class Signup extends React.Component {
         errors.pop();
       }
 
+      console.log(errors);
       return errors;
     };
   
     render() {
-      const { errors } = this.state;
       return (
           <div>
-              <h3>Signup</h3>
-              <form onSubmit={this.handleSubmit}>
-              
-                  {
-                    errors.map(error => <p key={error}>{error}</p>)
-                  }
-                  <div>
-                      <label>Username:</label>
-                      <input type="text" ref={this.username} />
+              <Header />
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-6 App">
+                  <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                  </header>
                   </div>
-                  <div>
-                      <label>Email:</label>
-                      <input type="text" ref={this.email} />
+                  <div className="col-md-6">
+                  <h3>Signup</h3>
+                  <form onSubmit={this.handleSubmit}>
+                      <div className="form-group">
+                          <label htmlFor="usename">Username:</label>
+                          <input type="text" className="form-control" ref={this.username} />    
+                          <small id="usenameError" className="form-text text-muted error-color">
+                            {this.state.errors[0]}
+                          </small>
+                      </div>
+                      <div className="form-group">
+                          <label htmlFor="email">Email:</label>
+                          <input type="text" className="form-control" ref={this.email} />
+                          <small id="usenameError" className="form-text text-muted error-color">
+                            {this.state.errors[1]}
+                          </small>
+                      </div>
+                      <div className="form-group">
+                          <label htmlFor="password">Password:</label>
+                          <input type="password" className="form-control" ref={this.password} />
+                          <small id="usenameError" className="form-text text-muted error-color">
+                            {this.state.errors[2]}
+                          </small>
+                      </div>
+                      <div className="form-group">
+                          <label htmlFor="cpassword">Confirm Password:</label>
+                          <input type="password" className="form-control" ref={this.cpassword} />
+                          <small id="usenameError" className="form-text text-muted error-color">
+                            {this.state.errors[3]}
+                          </small>
+                      </div>
+                      <div className="form-group">
+                          <label htmlFor="location">Location:</label>
+                          <input type="text" className="form-control" ref={this.location} />
+                          <small id="locationError" className="form-text text-muted error-color">
+                            Optional
+                          </small>
+                      </div>
+                      <div className="form-group">
+                          <label htmlFor="website">Website:</label>
+                          <input type="text" className="form-control" ref={this.website} />
+                          <small id="websiteError" className="form-text text-muted error-color">
+                            Optional
+                          </small>
+                      </div>
+                      <div className="form-group">
+                          <label htmlFor="dateofbirth">Date of Birth:</label>
+                          <input type="text" className="form-control" ref={this.dateofbirth} />
+                          <small id="dateofbirthError" className="form-text text-muted error-color">
+                            Optional
+                          </small>
+                      </div>
+                      <div>
+                          <button className="btn btn-primary">Submit</button>
+                      </div>
+                  </form>
                   </div>
-                  <div>
-                      <label>Password:</label>
-                      <input type="password" ref={this.password} />
-                  </div>
-                  <div>
-                      <label>Confirm Password:</label>
-                      <input type="password" ref={this.cpassword} />
-                  </div>
-                  <div>
-                      <button>Submit</button>
-                  </div>
-              </form>
+                </div>
+              </div>
           </div>
       );
     }

@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from '../logo.svg';
+import Header from './Header';
 
 class Login extends React.Component {
     constructor(props) {
@@ -58,25 +60,44 @@ class Login extends React.Component {
     };
   
     render() {
-      const { errors } = this.state;
       return (
         <div>
-          Please Login into the website.
-          <form onSubmit={this.handleSubmit}>
-            {errors.map(error => <p key={error}>{error}</p>)}
-            <div>
-              <label>Username:</label>
-              <input type="password" ref={this.username} />
-            </div>
-            <div>
-              <label>Password:</label>
-              <input type="password" ref={this.password} />
-            </div>
-            <div>
-              <button>Submit</button>
-            </div>
-          </form>
-        </div>
+              <Header />
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-6 App">
+                  <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                  </header>
+                  </div>
+                  <div className="col-md-6">
+                  <h3>Please Login into the website.</h3>
+                  <form onSubmit={this.handleSubmit}>
+                    <small id="passwordError" className="form-text text-muted error-color">
+                      {this.state.errors[2]}
+                    </small>
+                    <div className="form-group">
+                        <label htmlFor="usename">Username:</label>
+                        <input type="text" className="form-control" ref={this.username} />    
+                        <small id="usenameError" className="form-text text-muted error-color">
+                          {this.state.errors[0]}
+                        </small>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" className="form-control" ref={this.password} />    
+                        <small id="passwordError" className="form-text text-muted error-color">
+                          {this.state.errors[1]}
+                        </small>
+                    </div>
+                    <div>
+                      <button  className="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+          </div>
       );
     }
   }
